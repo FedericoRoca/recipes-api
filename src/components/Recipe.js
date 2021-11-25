@@ -11,22 +11,23 @@ class Recipe extends React.Component {
   componentDidMount = async () => {
     const title = this.props.location.state.recipe;
     const req = await fetch(
-      `https://cors-anywhere.herokuapp.com/http://food2fork.com/api/search?key=${API_KEY}&q=${title}`,
+      `https://cors-anywhere.herokuapp.com/http://recipesapi.herokuapp.com/api/v2/recipes?q=${title}`,
     );
 
     const res = await req.json();
     this.setState({activeRecipe: res.recipes[0]});
-    console.log(this.state.activeRecipe);
+    console.log('hola', this.state.activeRecipe);
   };
   render() {
     const recipe = this.state.activeRecipe;
+    console.log('recipe', recipe);
     return (
       <div className="container">
         {this.state.activeRecipe.length !== 0 && (
           <div className="active-recipe">
             <img
               className="active-recipe__img"
-              src={recipe.image_url}
+              src={recipe.imageUrl}
               alt={recipe.title}
             />
             <h3 className="active-recipe__title">{recipe.title}</h3>
