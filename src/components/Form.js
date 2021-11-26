@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 const Form = (props) => {
-  const [actualRecipe, setActualRecipe] = useState();
+  const [actualRecipe, setActualRecipe] = useState('');
   return (
     <form
       onSubmit={(e) => {
