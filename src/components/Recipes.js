@@ -2,11 +2,12 @@ import React from 'react';
 
 import {Link} from 'react-router-dom';
 const Recipes = ({recipes}) => {
+  const {data, loading} = recipes;
   return (
     <div className="container">
       <div className="row">
-        {recipes.data
-          ? recipes.data.recipes.map((recipe) => {
+        {!loading
+          ? data.recipes.map((recipe) => {
               return (
                 <div
                   key={recipe.title}
